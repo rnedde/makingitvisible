@@ -1,0 +1,89 @@
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    noStroke();
+    ellipseMode(CENTER);
+    rectMode(CENTER);
+    
+    
+  }
+
+  let numTrichomes = 400;
+  let seed = 2;
+  let diameter = 200;
+  let height;
+  let distance = 30;
+  let vary = 1.5;
+  function draw() {
+    background(50,30,150);
+    fill(255);
+    
+    push();
+    // blendMode(DIFFERENCE);
+    blendMode(HARD_LIGHT);
+    // blendMode(SCREEN);
+    circle(mouseX,mouseY,diameter);
+    randomSeed(seed);
+    //create random trichomes
+    for (var i = 0; i<numTrichomes; i++){  
+        
+        randX = i*distance + random(-5,5)-100;
+        for(var j = 0; j<numTrichomes; j++){
+        randY = j*distance*1.8 + random(-15,15)-100;
+        randTilt = random(-10,10);
+        randHeight = random(90,130);
+        fill(30,20,100);
+        beginShape();
+        //1
+        vertex(randX,randY);
+        //2 bottom
+        randX+=10+random(-vary,vary); randY+=0+random(-vary,vary); 
+        vertex(randX,randY);
+        //3 right stalk
+        randX-=1+random(-vary,vary); randY-=25+random(-vary,vary); 
+        vertex(randX,randY);
+        //4 branch 1
+        randX+=15+random(-vary,vary); randY-=15+random(-vary,vary); 
+        vertex(randX,randY);
+        //5
+        randX-=15+random(-vary,vary); randY+=10+random(-vary,vary); 
+        vertex(randX,randY);
+        //6 middle branch
+        randX+=0+random(-vary,vary); randY-=20+random(-vary,vary); 
+        vertex(randX,randY);
+        //7
+        randX-=5+random(-vary,vary); randY+=17+random(-vary,vary); 
+        vertex(randX,randY);
+        //8 branch 3
+        randX-=15+random(-vary,vary); randY-=7+random(-vary,vary); 
+        vertex(randX,randY);
+        //9
+        randX+=15+random(-vary,vary); randY+=15+random(-vary,vary); 
+        vertex(randX,randY);
+        // //10
+        // randX+=0+random(-vary,vary); randY+=0+random(-vary,vary); 
+        // vertex(randX,randY);
+        // //11
+        // randX+=0+random(-vary,vary); randY+=0+random(-vary,vary); 
+        // vertex(randX,randY);
+        
+endShape();
+        ellipse(randX+1, randY+random(0,20), 3,6);
+    }
+    
+    }
+    pop();
+    }  
+    // function mousePressed(){
+    //     diameter = maxDiam;
+    // }
+    // function mouseReleased(){
+    //     diameter = minDiam;
+    // }
+    function mouseClicked(){
+        seed +=1;
+    }
+//   function mouseDragged(){
+    
+//     rect(mouseX-5, mouseY-20, 10, 20);
+//     // triangle(mouseX-3, mouseY, mouseX+3, mouseY, mouseX, mouseY-40);
+//   }

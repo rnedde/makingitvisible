@@ -1,0 +1,48 @@
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    fill('#ED78B7');
+    rect(10,10,10,10)
+    fill('#A378C9');
+    rect(30,10,10,10);
+    // noLoop();
+  }
+
+  let numTrichomes = 400;
+  
+  let noiseVal = 0.03;
+  
+  let dyed = '#ED78B7';
+  let clear = '#A378C9';
+  let fillColor = clear;
+  let seed = 1;
+
+  function draw() {
+    randomSeed(seed);
+    // noiseX = random(0,50);
+    noStroke();
+    background(256, 200, 230);
+    let noiseX = 10;
+    let noiseY = 400;
+    for (var i = 0; i<numTrichomes; i++){
+
+        randX = noise(noiseX)*windowWidth;
+        randY = noise(noiseY)*windowHeight;
+
+        if (mouseX+30 >= randX && mouseX-30 <= randX && mouseY+30 >= randY && mouseY-30 <= randY ){
+            fillColor = dyed;
+        }else{
+            fillColor = clear;
+            
+        }
+        fill(fillColor);
+        triangle(randX, randY, randX+6, randY, randX+3+noiseX, randY-40);
+        noiseX+=noiseVal;
+        noiseY+=noiseVal;
+    }
+ 
+    }  
+  function mouseDragged(){
+    
+    rect(mouseX-5, mouseY-20, 10, 20);
+    // triangle(mouseX-3, mouseY, mouseX+3, mouseY, mouseX, mouseY-40);
+  }

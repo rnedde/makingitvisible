@@ -1,0 +1,15 @@
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    noLoop();
+  }
+  
+  function draw() {
+    var n = 500; 
+  
+    noStroke();
+    background(256, 200, 230);
+ 
+    }  
+  function mouseDragged(){
+    triangle(mouseX-3, mouseY, mouseX+3, mouseY, mouseX, mouseY-40);
+  }

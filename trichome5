@@ -1,0 +1,52 @@
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    noStroke();
+    ellipseMode(CENTER);
+    
+    
+  }
+
+  let numTrichomes = 800;
+  let seed = 2;
+  let minDiam = 100;
+  let maxDiam = 500;
+  let diameter = 100;
+  let height;
+  function draw() {
+    background(50,30,150);
+    fill(255);
+    
+    push();
+    // blendMode(DIFFERENCE);
+    blendMode(HARD_LIGHT);
+    // blendMode(SCREEN);
+    circle(mouseX,mouseY,diameter);
+    randomSeed(seed);
+
+    //create random trichomes
+    for (var i = 0; i<numTrichomes; i++){  
+        randX = random(0,windowWidth);
+        randY = random(0,windowHeight);
+        randTilt = random(-10,10);
+        randHeight = random(60,90);
+        fill(50,30,150);
+        triangle(randX, randY, randX+14, randY, randX+7+randTilt, randY-randHeight);
+        ellipse(randX+7, randY-10, 5,10);
+    }
+    pop();
+
+    }  
+    // function mousePressed(){
+    //     diameter = maxDiam;
+    // }
+    // function mouseReleased(){
+    //     diameter = minDiam;
+    // }
+    function mouseClicked(){
+        seed +=1;
+    }
+//   function mouseDragged(){
+    
+//     rect(mouseX-5, mouseY-20, 10, 20);
+//     // triangle(mouseX-3, mouseY, mouseX+3, mouseY, mouseX, mouseY-40);
+//   }

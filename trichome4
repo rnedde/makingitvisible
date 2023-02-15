@@ -1,0 +1,38 @@
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    noStroke();
+    
+    
+  }
+
+  let numTrichomes = 800;
+  let seed = 2;
+
+  function draw() {
+    background(50,30,150);
+    fill(255);
+    
+    push();
+    // blendMode(DIFFERENCE);
+    blendMode(HARD_LIGHT);
+    // blendMode(SCREEN);
+    circle(mouseX,mouseY,150);
+    randomSeed(seed);
+    for (var i = 0; i<numTrichomes; i++){  
+        randX = random(0,windowWidth);
+        randY = random(0,windowHeight);
+        randTilt = random(-10,10);
+        fill(50,30,150);
+        triangle(randX, randY, randX+10, randY, randX+5+randTilt, randY-100);
+        
+    }
+    pop();
+    }  
+    function mouseClicked(){
+        seed +=1;
+    }
+//   function mouseDragged(){
+    
+//     rect(mouseX-5, mouseY-20, 10, 20);
+//     // triangle(mouseX-3, mouseY, mouseX+3, mouseY, mouseX, mouseY-40);
+//   }
